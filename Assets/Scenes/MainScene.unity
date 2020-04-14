@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tailPrefab: {fileID: 101184, guid: f8137807577d5f949bb11cb4b88adbae, type: 3}
-  time_to_move: 0.1
+  time_to_move: 0.3
 --- !u!1 &682737737
 GameObject:
   m_ObjectHideFlags: 0

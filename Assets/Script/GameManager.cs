@@ -50,7 +50,7 @@ public class Gamemanager : MonoBehaviour
     {
         instance = this;
         FieldManager.init();
-        snake.init();
+        
     }
 
     /// <summary>

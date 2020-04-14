@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using MLAgents;
+using MLAgents.Sensors;
 
 /// <summary>
 /// Maneja la serpiente
 /// </summary>
-public class Snake : MonoBehaviour
+public class Snake : Agent
 {
 
 
@@ -40,16 +42,44 @@ public class Snake : MonoBehaviour
     /// Lista de posiciones de la cola
     /// </summary>
     private List<Transform> tail = new List<Transform>();
+    /// <summary>
+    /// posicion de la siguiente fruta
+    /// </summary>
+    public Vector2 position_fruit;
 
     /// <summary>
     /// Inicializa la serpiente
     /// </summary>
-    public void init()
+    public override void OnEpisodeBegin()
     {
         InvokeRepeating("DoMovement", time_to_move, time_to_move);
         movement = this.transform.localScale.x;
+
+    }
+    public override void CollectObservations(VectorSensor sensor)
+    {
+        sensor.AddObservation(position_fruit);
+        sensor.AddObservation(this.transform.position);
+        sensor.AddObservation(current_direction);
+
+        for (int index = 0; index < tail.Count(); index++)
+        {
+            sensor.AddObservation(tail[index].position);
+        }
     }
 
+    public override void OnActionReceived(float[] vectorAction)
+    {
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            current_direction = current_direction == Vector2.left ? current_direction : Vector2.right;
+        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+            current_direction = current_direction == Vector2.up ? current_direction : Vector2.down;
+        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            current_direction = current_direction == Vector2.right ? current_direction : Vector2.left;
+        else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+            current_direction = current_direction == Vector2.down ? current_direction : Vector2.up;
+
+    }
     // Update is called once per frame
     void Update()
     {

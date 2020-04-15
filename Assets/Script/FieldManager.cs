@@ -43,7 +43,7 @@ public class FieldManager : MonoBehaviour
     /// </summary>
     public void init()
     {
-        Gamemanager.SpawnFood += SpawnFood;
+        GameManager.SpawnFood += SpawnFood;
         limit_spacing = foodPrefab.transform.localScale.x * 2;
 
         SpawnFood();    

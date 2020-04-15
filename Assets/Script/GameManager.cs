@@ -6,18 +6,18 @@ using UnityEngine;
 /// <summary>
 /// Maneja toda la ejecucion del juego
 /// </summary>
-public class Gamemanager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     /// <summary>
     /// Instancia del gamemanager
     /// </summary>
-    private static Gamemanager instance;
+    private static GameManager instance;
 
     /// <summary>
     /// Devuelve la estancia activa del gamemanager
     /// </summary>
     /// <returns></returns>
-    public static Gamemanager getInstance()
+    public static GameManager getInstance()
     {
         return instance;
     }

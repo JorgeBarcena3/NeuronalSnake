@@ -56,16 +56,17 @@ public class Snake : Agent
     public override void OnEpisodeBegin()
     {
         restart();
+        CancelInvoke();
         InvokeRepeating("DoMovement", time_to_move, time_to_move);
-        position_fruit = Gamemanager.getInstance().FieldManager.position_fruit;
+        position_fruit = GameManager.getInstance().FieldManager.position_fruit;
     }
    
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(Gamemanager.getInstance().FieldManager.borderRight.position.x);       //1
-        sensor.AddObservation(Gamemanager.getInstance().FieldManager.borderLeft.position.x);        //1
-        sensor.AddObservation(Gamemanager.getInstance().FieldManager.borderTop.position.y);         //1
-        sensor.AddObservation(Gamemanager.getInstance().FieldManager.borderBottom.position.y);      //1
+        sensor.AddObservation(GameManager.getInstance().FieldManager.borderRight.position.x);       //1
+        sensor.AddObservation(GameManager.getInstance().FieldManager.borderLeft.position.x);        //1
+        sensor.AddObservation(GameManager.getInstance().FieldManager.borderTop.position.y);         //1
+        sensor.AddObservation(GameManager.getInstance().FieldManager.borderBottom.position.y);      //1
         sensor.AddObservation(position_fruit);                                                      //2
         sensor.AddObservation(new Vector2(this.transform.position.x, this.transform.position.y));   //2 
         sensor.AddObservation(current_direction);                                                   //2
@@ -142,10 +143,10 @@ public class Snake : Agent
 
             
         }
-        if (this.transform.position.x > Gamemanager.getInstance().FieldManager.borderRight.position.x ||
-                this.transform.position.x < Gamemanager.getInstance().FieldManager.borderLeft.position.x ||
-                this.transform.position.y > Gamemanager.getInstance().FieldManager.borderTop.position.y ||
-                this.transform.position.y < Gamemanager.getInstance().FieldManager.borderBottom.position.y)
+        if (this.transform.position.x > GameManager.getInstance().FieldManager.borderRight.position.x ||
+                this.transform.position.x < GameManager.getInstance().FieldManager.borderLeft.position.x ||
+                this.transform.position.y > GameManager.getInstance().FieldManager.borderTop.position.y ||
+                this.transform.position.y < GameManager.getInstance().FieldManager.borderBottom.position.y)
         {
             AddReward(-2f);
             EndEpisode();
@@ -190,7 +191,7 @@ public class Snake : Agent
             // Get longer in next Move call
             lleno = true;
 
-            Gamemanager.getInstance().spawnFoodOnField();
+            GameManager.getInstance().spawnFoodOnField();
             if (tail.Count > 25)
             {
                 AddReward(5f);
@@ -201,7 +202,7 @@ public class Snake : Agent
                 // Remove the Food
                 Destroy(coll.gameObject);
                 AddReward(1f);
-                position_fruit = Gamemanager.getInstance().FieldManager.position_fruit;
+                position_fruit = GameManager.getInstance().FieldManager.position_fruit;
             }
            
         }

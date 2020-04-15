@@ -21,7 +21,7 @@ public class Snake : Agent
     /// <summary>
     /// Cada cuanto tiempo se movera la serpiente
     /// </summary>
-    public float time_to_move = 0.3f;
+    public float time_to_move = 0f;
 
     /// <summary>
     /// Determina si la serpiente ha comido o no
@@ -46,60 +46,72 @@ public class Snake : Agent
     /// posicion de la siguiente fruta
     /// </summary>
     public Vector2 position_fruit;
-
     /// <summary>
     /// Inicializa la serpiente
     /// </summary>
+    public void Start()
+    {
+        movement = this.transform.localScale.x;
+    }
     public override void OnEpisodeBegin()
     {
+        restart();
         InvokeRepeating("DoMovement", time_to_move, time_to_move);
-        movement = this.transform.localScale.x;
-
+        position_fruit = Gamemanager.getInstance().FieldManager.position_fruit;
     }
+   
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(position_fruit);
-        sensor.AddObservation(this.transform.position);
-        sensor.AddObservation(current_direction);
-
-        for (int index = 0; index < tail.Count(); index++)
+        sensor.AddObservation(Gamemanager.getInstance().FieldManager.borderRight.position.x);       //1
+        sensor.AddObservation(Gamemanager.getInstance().FieldManager.borderLeft.position.x);        //1
+        sensor.AddObservation(Gamemanager.getInstance().FieldManager.borderTop.position.y);         //1
+        sensor.AddObservation(Gamemanager.getInstance().FieldManager.borderBottom.position.y);      //1
+        sensor.AddObservation(position_fruit);                                                      //2
+        sensor.AddObservation(new Vector2(this.transform.position.x, this.transform.position.y));   //2 
+        sensor.AddObservation(current_direction);                                                   //2
+        for (int index = 0; index < tail.Count(); index++)                                          //2 * tail.Count()(max 25) = 50
         {
-            sensor.AddObservation(tail[index].position);
+            sensor.AddObservation(new Vector2(tail[index].position.x, tail[index].position.y));
         }
+        for (int index = tail.Count(); index < 26; index++)
+        {
+            sensor.AddObservation(new Vector2(0f, 0f));
+        }
+    }
+    public override float[] Heuristic()
+    {
+        var action = new float[1];
+        action[0] = Input.GetAxis("Horizontal");
+        return action;
     }
 
     public override void OnActionReceived(float[] vectorAction)
     {
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-            current_direction = current_direction == Vector2.left ? current_direction : Vector2.right;
-        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-            current_direction = current_direction == Vector2.up ? current_direction : Vector2.down;
-        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-            current_direction = current_direction == Vector2.right ? current_direction : Vector2.left;
-        else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-            current_direction = current_direction == Vector2.down ? current_direction : Vector2.up;
-
+        if (current_direction == Vector2.left)
+        {
+            current_direction = vectorAction[0] == 0 ? Vector2.left : vectorAction[0] > 0 ? Vector2.up : Vector2.down;
+        }
+        else if (current_direction == Vector2.up)
+        {
+            current_direction = vectorAction[0] == 0 ? Vector2.up : vectorAction[0] > 0 ? Vector2.right :Vector2.left;
+        }
+        else if (current_direction == Vector2.right)
+        {
+            current_direction = vectorAction[0] == 0 ? Vector2.right : vectorAction[0] > 0 ? Vector2.down : Vector2.up;
+        }
+        else if (current_direction == Vector2.down)
+        {
+            current_direction = vectorAction[0] == 0 ? Vector2.down : vectorAction[0] > 0 ? Vector2.left : Vector2.right;
+        }
+   
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-            current_direction = current_direction == Vector2.left ? current_direction : Vector2.right;
-        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-            current_direction = current_direction == Vector2.up? current_direction : Vector2.down;
-        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-            current_direction = current_direction == Vector2.right ? current_direction : Vector2.left;
-        else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-            current_direction = current_direction == Vector2.down ? current_direction : Vector2.up;
-
-    }
-
     /// <summary>
     /// Realizamos un movimiento de la serpieten
     /// </summary>
     void DoMovement()
     {
+        RequestDecision();
+        float init_distance_to_fruit = Vector2.Distance(this.transform.position, position_fruit);
         // Guardamos la posicion en la que estamos (Para añadir a la cola)
         Vector2 old_pos = transform.position;
 
@@ -127,8 +139,28 @@ public class Snake : Agent
             
             tail.Insert(0, tail.Last());
             tail.RemoveAt(tail.Count - 1);
+
+            
+        }
+        if (this.transform.position.x > Gamemanager.getInstance().FieldManager.borderRight.position.x ||
+                this.transform.position.x < Gamemanager.getInstance().FieldManager.borderLeft.position.x ||
+                this.transform.position.y > Gamemanager.getInstance().FieldManager.borderTop.position.y ||
+                this.transform.position.y < Gamemanager.getInstance().FieldManager.borderBottom.position.y)
+        {
+            AddReward(-2f);
+            EndEpisode();
         }
 
+        float end_distance_to_fruit = Vector2.Distance(this.transform.position, position_fruit);
+        if (end_distance_to_fruit < init_distance_to_fruit)
+        {
+            AddReward(0.1f);
+        }
+        else
+        {
+            AddReward(-0.2f);
+        }
+        
     }
 
     /// <summary>
@@ -159,13 +191,24 @@ public class Snake : Agent
             lleno = true;
 
             Gamemanager.getInstance().spawnFoodOnField();
-
-            // Remove the Food
-            Destroy(coll.gameObject);
+            if (tail.Count > 25)
+            {
+                AddReward(5f);
+                EndEpisode();
+            }
+            else
+            {
+                // Remove the Food
+                Destroy(coll.gameObject);
+                AddReward(1f);
+                position_fruit = Gamemanager.getInstance().FieldManager.position_fruit;
+            }
+           
         }
         if(coll.tag == "tail" || coll.tag == "border")
         {
-            Gamemanager.getInstance().restart();
+            AddReward(-2f);
+            EndEpisode();
         }
     }
 }

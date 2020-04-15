@@ -37,14 +37,6 @@ public class Gamemanager : MonoBehaviour
     /// </summary>
     public static event Action SpawnFood = delegate { };
 
-    /// <summary>
-    /// Reinicia el juego
-    /// </summary>
-    public void restart()
-    {
-        snake.restart();
-    }
-
     // Start is called before the first frame update
     void Start()
     {

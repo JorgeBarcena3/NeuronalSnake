@@ -215,8 +215,8 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  maxStep: 2
-  tailPrefab: {fileID: 101184, guid: f8137807577d5f949bb11cb4b88adbae, type: 3}
+  maxStep: 10000000
+  tailPrefab: {fileID: 676862970}
   time_to_move: 0.3
   position_fruit: {x: 0, y: 0}
 --- !u!114 &676862972
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 1
+    vectorObservationSize: 60
     numStackedVectorObservations: 1
     vectorActionSize: 01000000
     vectorActionDescriptions: []
@@ -249,6 +249,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 676862969}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &676862977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676862970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DecisionPeriod: 3
+  TakeActionsBetweenDecisions: 1
+  offsetStep: 0
 --- !u!1 &682737737
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +861,7 @@ MonoBehaviour:
   borderBottom: {fileID: 1405795781}
   borderLeft: {fileID: 1283831685}
   borderRight: {fileID: 1686268618}
+  position_fruit: {x: 0, y: 0}
 --- !u!4 &1810456773
 Transform:
   m_ObjectHideFlags: 0

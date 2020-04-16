@@ -16,7 +16,7 @@ public class FieldManager : MonoBehaviour
     public Transform borderLeft;
     public Transform borderRight;
 
-    public Vector2 position_fruit;
+    public GameObject position_fruit;
 
 
     // Spawn one piece of food
@@ -32,10 +32,9 @@ public class FieldManager : MonoBehaviour
                                   borderTop.position.y - limit_spacing);
 
         // Instantiate the food at (x, y)
-        Instantiate(foodPrefab,
+        position_fruit = Instantiate(foodPrefab,
                     new Vector2(x, y),
-                    Quaternion.identity); // default rotation
-        position_fruit = new Vector2(x, y);
+                    Quaternion.identity);
     }
 
     /// <summary>

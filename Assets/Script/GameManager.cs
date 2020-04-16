@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         FieldManager.init();
-        
+        snake.init();
     }
 
     /// <summary>

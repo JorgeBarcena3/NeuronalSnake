@@ -160,7 +160,7 @@ MonoBehaviour:
     vectorActionSize: 04000000
     vectorActionDescriptions: []
     vectorActionSpaceType: 0
-  m_Model: {fileID: 5022602860645237092, guid: f477501cebd512e4eb8edf62214784b7, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 4c06f8d3d19a6ce4795e8d8e48decfd2, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 2
   m_BehaviorName: neuronalSnake

@@ -82,12 +82,32 @@ public class Snake : Agent
     public override float[] Heuristic()
     {
         var action = new float[1];
-        action[0] = Input.GetAxis("Horizontal");
+        if (Input.GetButtonUp("D"))
+        {
+            action[0] = 1;
+        }
+        else if (Input.GetButtonUp("A"))
+        {
+            action[0] = -1;
+        }
+        else
+        {
+            action[0] = 0;
+        }
+        //if (Input.GetAxis("Horizontal") != 0)
+        //{
+        //    action[0] = Input.GetAxis("Horizontal") > 0 ? 1 : -1;
+        //}
+        //else
+        //{
+        //    action[0] = 0;
+        //}
         return action;
     }
 
     public override void OnActionReceived(float[] vectorAction)
     {
+        //Debug.Log("recivido: " + vectorAction[0]);
         if (current_direction == Vector2.left)
         {
             current_direction = vectorAction[0] == 0 ? Vector2.left : vectorAction[0] > 0 ? Vector2.up : Vector2.down;
@@ -104,14 +124,13 @@ public class Snake : Agent
         {
             current_direction = vectorAction[0] == 0 ? Vector2.down : vectorAction[0] > 0 ? Vector2.left : Vector2.right;
         }
-   
+        //DoMovement();
     }
     /// <summary>
     /// Realizamos un movimiento de la serpieten
     /// </summary>
     void DoMovement()
     {
-        RequestDecision();
         float init_distance_to_fruit = Vector2.Distance(this.transform.position, position_fruit);
         // Guardamos la posicion en la que estamos (Para añadir a la cola)
         Vector2 old_pos = transform.position;

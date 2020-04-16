@@ -216,7 +216,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   maxStep: 10000000
-  tailPrefab: {fileID: 676862970}
+  tailPrefab: {fileID: 101184, guid: f8137807577d5f949bb11cb4b88adbae, type: 3}
   time_to_move: 0.3
   position_fruit: {x: 0, y: 0}
 --- !u!114 &676862972
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 60
+    vectorObservationSize: 62
     numStackedVectorObservations: 1
     vectorActionSize: 01000000
     vectorActionDescriptions: []
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 3
+  DecisionPeriod: 1
   TakeActionsBetweenDecisions: 1
   offsetStep: 0
 --- !u!1 &682737737

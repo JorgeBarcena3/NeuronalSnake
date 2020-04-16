@@ -2,7 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - FieldManager
-    - Gamemanager
+    - GameManager
     - Snake
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
@@ -172,7 +172,7 @@ ScriptsOnlyBuild:
       Hash: 930440f988975130aeafb2599d438abd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Gamemanager
+    className: GameManager
   - hash:
       serializedVersion: 2
       Hash: a3ea236b81667ce963577b016d4aef95

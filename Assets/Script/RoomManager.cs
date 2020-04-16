@@ -6,26 +6,14 @@ using UnityEngine;
 /// <summary>
 /// Maneja toda la ejecucion del juego
 /// </summary>
-public class GameManager : MonoBehaviour
+public class RoomManager : MonoBehaviour
 {
-    /// <summary>
-    /// Instancia del gamemanager
-    /// </summary>
-    private static GameManager instance;
-
-    /// <summary>
-    /// Devuelve la estancia activa del gamemanager
-    /// </summary>
-    /// <returns></returns>
-    public static GameManager getInstance()
-    {
-        return instance;
-    }
+  
 
     /// <summary>
     /// Maneja el estado del campo
     /// </summary>
-    public FieldManager FieldManager;
+    public FieldManager fieldManager;
 
     /// <summary>
     /// Seripiente que se encuentra en juego
@@ -35,13 +23,12 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Delegado que se lanza cuando se cumple el tiempo de espera
     /// </summary>
-    public static event Action SpawnFood = delegate { };
+    public event Action SpawnFood = delegate { };
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        instance = this;
-        FieldManager.init();
+        fieldManager.init();
         snake.init();
     }
 

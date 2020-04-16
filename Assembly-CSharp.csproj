@@ -63,9 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\FieldManager.cs" />
-    <Compile Include="Assets\Script\GameManager.cs" />
+    <Compile Include="Assets\Script\RoomManager.cs" />
     <Compile Include="Assets\Script\Snake.cs" />
-    <None Include="Assets\ML-Agents\config\Comandds.txt" />
+    <None Include="Assets\ML-Agents\config\Commands.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/GitHub/NeuronalSnake/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

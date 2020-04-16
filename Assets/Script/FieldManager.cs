@@ -5,19 +5,38 @@ using Random = UnityEngine.Random;
 
 public class FieldManager : MonoBehaviour
 {
-    // Food Prefab
+
+    /// <summary>
+    /// Manager de la habitacion
+    /// </summary>
+    [Header("Manager")]
+    public RoomManager gameManager;
+
+    /// <summary>
+    /// Prefab de la comida
+    /// </summary>
+    [Header("Prefab de la comida a spawnear")]
     public GameObject foodPrefab;
 
-    private float limit_spacing;
-
-    // Borders
+    /// <summary>
+    /// Posiciones de los limites
+    /// </summary>
+    [Header("Posicion de los bordes")]
     public Transform borderTop;
     public Transform borderBottom;
     public Transform borderLeft;
     public Transform borderRight;
 
-    public GameObject position_fruit;
+    /// <summary>
+    /// Comida activa
+    /// </summary>
+    [HideInInspector]
+    public GameObject food;
 
+    /// <summary>
+    /// Espacio de margen al spawnear la comida
+    /// </summary>
+    private float limit_spacing;
 
     // Spawn one piece of food
     void SpawnFood()
@@ -31,10 +50,16 @@ public class FieldManager : MonoBehaviour
         int y = (int)Random.Range(borderBottom.position.y + limit_spacing,
                                   borderTop.position.y - limit_spacing);
 
-        // Instantiate the food at (x, y)
-        position_fruit = Instantiate(foodPrefab,
-                    new Vector2(x, y),
-                    Quaternion.identity);
+        if (food == null)
+        {
+            // Instantiate the food at (x, y)
+            food = Instantiate(foodPrefab, new Vector2(x, y), Quaternion.identity);
+        }
+        else
+        {
+            food.transform.position = new Vector2(x, y);
+        }
+            
     }
 
     /// <summary>
@@ -42,10 +67,10 @@ public class FieldManager : MonoBehaviour
     /// </summary>
     public void init()
     {
-        GameManager.SpawnFood += SpawnFood;
-        limit_spacing = foodPrefab.transform.localScale.x * 2;
+        gameManager.SpawnFood += SpawnFood;
+        limit_spacing = foodPrefab.transform.localScale.x * 4;
 
-        SpawnFood();    
+        SpawnFood();
 
     }
 }

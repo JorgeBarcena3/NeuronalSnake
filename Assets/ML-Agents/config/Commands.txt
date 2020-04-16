@@ -1,0 +1,2 @@
+mlagents-learn config/snake_config.yaml --run-id=Snake-01 --train --base-port 5004
+tensorboard --logdir=summaries

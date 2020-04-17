@@ -47,84 +47,90 @@ public class Snake : Agent
     /// </summary>
     public Vector2 position_fruit;
     /// <summary>
+    /// Maneja el estado del campo
+    /// </summary>
+    public FieldManager FieldManager;
+    /// <summary>
+    /// deltatime del juego
+    /// </summary>
+    private float my_delta_time;
+
+    private bool [] sensor_cola = new bool[8];
+    private bool [] sensor_fruta = new bool[8];
+
+
+    /// <summary>
     /// Inicializa la serpiente
     /// </summary>
+    /// 
     public void Start()
     {
+        FieldManager.init();
+        my_delta_time = 0;
         movement = this.transform.localScale.x;
     }
     public override void OnEpisodeBegin()
     {
         restart();
         CancelInvoke();
-        InvokeRepeating("DoMovement", time_to_move, time_to_move);
-        position_fruit = GameManager.getInstance().FieldManager.position_fruit;
+        position_fruit = FieldManager.position_fruit;
     }
-   
+    private void FixedUpdate()
+    {
+        my_delta_time += Time.deltaTime;
+        if (my_delta_time > time_to_move)
+        {
+            DoMovement();
+            RequestAction();
+            my_delta_time = 0;
+        }
+    }
+
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(GameManager.getInstance().FieldManager.borderRight.position.x);       //1
-        sensor.AddObservation(GameManager.getInstance().FieldManager.borderLeft.position.x);        //1
-        sensor.AddObservation(GameManager.getInstance().FieldManager.borderTop.position.y);         //1
-        sensor.AddObservation(GameManager.getInstance().FieldManager.borderBottom.position.y);      //1
-        sensor.AddObservation(position_fruit);                                                      //2
-        sensor.AddObservation(new Vector2(this.transform.position.x, this.transform.position.y));   //2 
+        sensor.AddObservation(Mathf.Abs(transform.position.x - FieldManager.borderRight.position.x));      //1
+        sensor.AddObservation(Mathf.Abs(transform.position.x - FieldManager.borderLeft.position.x));        //1
+        sensor.AddObservation(Mathf.Abs(transform.position.y - FieldManager.borderTop.position.y));         //1
+        sensor.AddObservation(Mathf.Abs(transform.position.y - FieldManager.borderBottom.position.y));      //1
+        sensor.AddObservation(Vector2.Distance(transform.position, position_fruit));                        //1
         sensor.AddObservation(current_direction);                                                   //2
-        for (int index = 0; index < tail.Count(); index++)                                          //2 * tail.Count()(max 25) = 50
-        {
-            sensor.AddObservation(new Vector2(tail[index].position.x, tail[index].position.y));
-        }
-        for (int index = tail.Count(); index < 26; index++)
-        {
-            sensor.AddObservation(new Vector2(0f, 0f));
-        }
+        sensor.AddObservation(tail.Count());                                                        //1
+       
     }
     public override float[] Heuristic()
     {
-        var action = new float[1];
-        if (Input.GetButtonUp("D"))
-        {
-            action[0] = 1;
-        }
-        else if (Input.GetButtonUp("A"))
-        {
-            action[0] = -1;
-        }
-        else
-        {
-            action[0] = 0;
-        }
-        //if (Input.GetAxis("Horizontal") != 0)
-        //{
-        //    action[0] = Input.GetAxis("Horizontal") > 0 ? 1 : -1;
-        //}
-        //else
-        //{
-        //    action[0] = 0;
-        //}
+        var action = new float[2];
+      
+        action[0] = Input.GetAxis("Horizontal") > 0 ? 1 : Input.GetAxis("Horizontal") < 0 ? -1 : 0;
+        action[1] = Input.GetAxis("Vertical") > 0 ? 1 : Input.GetAxis("Vertical") < 0 ? - 1 : 0;
+        
         return action;
     }
 
     public override void OnActionReceived(float[] vectorAction)
     {
-        //Debug.Log("recivido: " + vectorAction[0]);
-        if (current_direction == Vector2.left)
-        {
-            current_direction = vectorAction[0] == 0 ? Vector2.left : vectorAction[0] > 0 ? Vector2.up : Vector2.down;
-        }
-        else if (current_direction == Vector2.up)
-        {
-            current_direction = vectorAction[0] == 0 ? Vector2.up : vectorAction[0] > 0 ? Vector2.right :Vector2.left;
-        }
-        else if (current_direction == Vector2.right)
-        {
-            current_direction = vectorAction[0] == 0 ? Vector2.right : vectorAction[0] > 0 ? Vector2.down : Vector2.up;
-        }
-        else if (current_direction == Vector2.down)
-        {
-            current_direction = vectorAction[0] == 0 ? Vector2.down : vectorAction[0] > 0 ? Vector2.left : Vector2.right;
-        }
-        //DoMovement();
+
+        current_direction += new Vector2(vectorAction[0], vectorAction[1]);
+        current_direction.Normalize();
+        
+        
+        //if (current_direction == Vector2.left)
+        //{
+        //    current_direction = vectorAction[1] > vectorAction[0] && vectorAction[1] > vectorAction[2] ? Vector2.left : vectorAction[2] > vectorAction[0] ? Vector2.up : Vector2.down;
+        //}
+        //else if (current_direction == Vector2.up)
+        //{
+        //    current_direction = vectorAction[1] > vectorAction[0] && vectorAction[1] > vectorAction[2] ? Vector2.up : vectorAction[2] > vectorAction[0] ? Vector2.right :Vector2.left;
+        //}
+        //else if (current_direction == Vector2.right)
+        //{
+        //    current_direction = vectorAction[1] > vectorAction[0] && vectorAction[1] > vectorAction[2] ? Vector2.right : vectorAction[2] > vectorAction[0] ? Vector2.down : Vector2.up;
+        //}
+        //else if (current_direction == Vector2.down)
+        //{
+        //    current_direction = vectorAction[1] > vectorAction[0] && vectorAction[1] > vectorAction[2] ? Vector2.down : vectorAction[2] > vectorAction[0] ? Vector2.left : Vector2.right;
+        //}
+        
     }
     /// <summary>
     /// Realizamos un movimiento de la serpieten
@@ -162,10 +168,10 @@ public class Snake : Agent
 
             
         }
-        if (this.transform.position.x > GameManager.getInstance().FieldManager.borderRight.position.x ||
-                this.transform.position.x < GameManager.getInstance().FieldManager.borderLeft.position.x ||
-                this.transform.position.y > GameManager.getInstance().FieldManager.borderTop.position.y ||
-                this.transform.position.y < GameManager.getInstance().FieldManager.borderBottom.position.y)
+        if (this.transform.position.x > FieldManager.borderRight.position.x ||
+                this.transform.position.x < FieldManager.borderLeft.position.x ||
+                this.transform.position.y > FieldManager.borderTop.position.y ||
+                this.transform.position.y < FieldManager.borderBottom.position.y)
         {
             AddReward(-2f);
             EndEpisode();
@@ -176,7 +182,7 @@ public class Snake : Agent
         {
             AddReward(0.1f);
         }
-        else
+        else if(end_distance_to_fruit > init_distance_to_fruit)
         {
             AddReward(-0.2f);
         }
@@ -198,7 +204,9 @@ public class Snake : Agent
         tail.Clear();
 
         //reset to origin
-        transform.position = new Vector3(0, 0, 0);
+        transform.position = FieldManager.transform.position;
+        Destroy(FieldManager.reference);
+        FieldManager.SpawnFood();
 
     }
 
@@ -210,18 +218,18 @@ public class Snake : Agent
             // Get longer in next Move call
             lleno = true;
 
-            GameManager.getInstance().spawnFoodOnField();
+            FieldManager.SpawnFood();
             if (tail.Count > 25)
             {
-                AddReward(5f);
+                AddReward(25f);
                 EndEpisode();
             }
             else
             {
                 // Remove the Food
                 Destroy(coll.gameObject);
-                AddReward(1f);
-                position_fruit = GameManager.getInstance().FieldManager.position_fruit;
+                AddReward(5f);
+                position_fruit = FieldManager.position_fruit;
             }
            
         }

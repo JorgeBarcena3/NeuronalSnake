@@ -2,7 +2,6 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - FieldManager
-    - GameManager
     - Snake
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
@@ -52,8 +51,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 10068}
-    - Class: 114
-      Script: {instanceID: 10070}
     - Class: 114
       Script: {instanceID: 10414}
     - Class: 114
@@ -241,7 +238,7 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: 10590e0cfba5963f93d64566f0898182
+      Hash: 8c865f91505f22cb53d80f8626827d03
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Snake
@@ -451,7 +448,7 @@ ScriptsOnlyBuild:
     className: AudioTrack
   - hash:
       serializedVersion: 2
-      Hash: 05959a35d42ce0cf75e8097a0e51c81d
+      Hash: 4360c7a22fb459bb6639adf2e1a2834a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FieldManager

@@ -7,6 +7,7 @@ public class FieldManager : MonoBehaviour
 {
     // Food Prefab
     public GameObject foodPrefab;
+    public GameObject reference;
 
     private float limit_spacing;
 
@@ -20,7 +21,7 @@ public class FieldManager : MonoBehaviour
 
 
     // Spawn one piece of food
-    void SpawnFood()
+    public void SpawnFood()
     {
 
         // x position between left & right border
@@ -32,7 +33,7 @@ public class FieldManager : MonoBehaviour
                                   borderTop.position.y - limit_spacing);
 
         // Instantiate the food at (x, y)
-        Instantiate(foodPrefab,
+        reference = Instantiate(foodPrefab,
                     new Vector2(x, y),
                     Quaternion.identity); // default rotation
         position_fruit = new Vector2(x, y);
@@ -43,9 +44,7 @@ public class FieldManager : MonoBehaviour
     /// </summary>
     public void init()
     {
-        GameManager.SpawnFood += SpawnFood;
         limit_spacing = foodPrefab.transform.localScale.x * 2;
-
         SpawnFood();    
 
     }

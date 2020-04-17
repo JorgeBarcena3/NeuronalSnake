@@ -9,7 +9,7 @@ using MLAgents.Sensors;
 /// <summary>
 /// Maneja la serpiente
 /// </summary>
-public class Snake : Agent
+public class Snake2 : Agent
 {
 
 
@@ -92,7 +92,8 @@ public class Snake : Agent
         sensor.AddObservation(Mathf.Abs(transform.position.x - FieldManager.borderLeft.position.x));        //1
         sensor.AddObservation(Mathf.Abs(transform.position.y - FieldManager.borderTop.position.y));         //1
         sensor.AddObservation(Mathf.Abs(transform.position.y - FieldManager.borderBottom.position.y));      //1
-        sensor.AddObservation(Vector2.Distance(transform.position, position_fruit));                        //1
+        sensor.AddObservation(position_fruit);                                                              //2
+        sensor.AddObservation(new Vector2(transform.position.x, transform.position.y));                     //2
         sensor.AddObservation(current_direction);                                                           //2
         sensor.AddObservation(tail.Count());                                                                //1
 
@@ -200,19 +201,14 @@ public class Snake : Agent
             // Get longer in next Move call
             lleno = true;
 
+            // Remove the Food
+            Destroy(coll.gameObject);
+            AddReward(5f);
+            Destroy(FieldManager.reference);
             FieldManager.SpawnFood();
-            if (tail.Count > 25)
-            {
-                AddReward(25f);
-                EndEpisode();
-            }
-            else
-            {
-                // Remove the Food
-                Destroy(coll.gameObject);
-                AddReward(5f);
-                position_fruit = FieldManager.position_fruit;
-            }
+            position_fruit = FieldManager.position_fruit;
+
+
 
         }
         if (coll.tag == "tail" || coll.tag == "border")

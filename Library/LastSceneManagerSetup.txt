@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Train.unity
+- path: Assets/Scenes/v3/Play.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

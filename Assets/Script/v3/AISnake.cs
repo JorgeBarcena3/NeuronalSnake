@@ -44,13 +44,13 @@ public class DebugInfo
 /// <summary>
 /// Maneja la serpiente
 /// </summary>
-public class Snake : Agent
+public class AISnake : Agent
 {
     [Header("Manager")]
     /// <summary>
     /// Manager del room
     /// </summary>
-    public RoomManager roomManager;
+    public AIRoomManager roomManager;
 
     [Header("Prefab de la cola")]
     /// <summary>

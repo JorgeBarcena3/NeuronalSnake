@@ -137,7 +137,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  maxStep: 500000
+  maxStep: 1000000
   roomManager: {fileID: 0}
   tailPrefab: {fileID: 101184, guid: f8137807577d5f949bb11cb4b88adbae, type: 3}
   time_to_move: 0.1

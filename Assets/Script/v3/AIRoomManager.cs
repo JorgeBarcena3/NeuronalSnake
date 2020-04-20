@@ -6,19 +6,19 @@ using UnityEngine;
 /// <summary>
 /// Maneja toda la ejecucion del juego
 /// </summary>
-public class RoomManager : MonoBehaviour
+public class AIRoomManager : MonoBehaviour
 {
   
 
     /// <summary>
     /// Maneja el estado del campo
     /// </summary>
-    public FieldManager fieldManager;
+    public AIFieldManager fieldManager;
 
     /// <summary>
     /// Seripiente que se encuentra en juego
     /// </summary>
-    public Snake snake;
+    public AISnake snake;
 
     /// <summary>
     /// Delegado que se lanza cuando se cumple el tiempo de espera

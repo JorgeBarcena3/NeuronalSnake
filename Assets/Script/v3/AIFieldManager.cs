@@ -3,14 +3,14 @@ using System.Collections;
 using System;
 using Random = UnityEngine.Random;
 
-public class FieldManager : MonoBehaviour
+public class AIFieldManager : MonoBehaviour
 {
 
     /// <summary>
     /// Manager de la habitacion
     /// </summary>
     [Header("Manager")]
-    public RoomManager gameManager;
+    public AIRoomManager gameManager;
 
     /// <summary>
     /// Prefab de la comida

@@ -25,6 +25,8 @@ public class AIRoomManager : MonoBehaviour
     /// </summary>
     public event Action SpawnFood = delegate { };
 
+   
+
     // Start is called before the first frame update
     void Awake()
     {

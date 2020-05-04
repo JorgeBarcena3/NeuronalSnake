@@ -105,12 +105,22 @@ public class AISnake : Agent
     /// <summary>
     /// Lista de posiciones de la cola
     /// </summary>
-    private List<Transform> tail = new List<Transform>();
+    public List<Transform> tail = new List<Transform>();
 
     /// <summary>
     /// Posicion inicial de spawneo
     /// </summary>
     private Vector2 start_pos = Vector2.zero;
+
+    /// <summary>
+    /// Determina si quien juega es la IA
+    /// </summary>
+    public bool isIA = true;
+
+    /// <summary>
+    /// Delegado que se lanza cuando la serpiente muere
+    /// </summary>
+    public event Action<AIRoomManager> deadDelegate = delegate { };
 
     /// <summary>
     /// Inicializa la serpiente
@@ -143,11 +153,20 @@ public class AISnake : Agent
     {
         current_time += Time.deltaTime;
 
-        if (current_time > time_to_move)
+        if (current_time > time_to_move && isIA)
         {
             DoMovement();
             RequestDecision();
             current_time = 0;
+        }
+        else if( !isIA )
+        {
+            if(current_time > time_to_move)
+            {
+                current_time = 0;
+                DoMovement();
+            }
+            RequestDecision();
         }
 
         if (collideLimits(this.transform.position))
@@ -171,6 +190,7 @@ public class AISnake : Agent
     public void init()
     {
 
+        deadDelegate(roomManager);
         food_debug.ForEach(m => m.color = Color.blue);
         tail_debug.ForEach(m => m.color = Color.red);
         wall_debug.ForEach(m => m.color = Color.green);
@@ -342,6 +362,8 @@ public class AISnake : Agent
     public override float[] Heuristic()
     {
         var action = new float[1];
+
+        action[0] = last_direction == Vector2.right ? 0 : (last_direction == -Vector2.right) ? 2: (last_direction == Vector2.up) ? 3 : 1 ;
 
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             action[0] = 0f;

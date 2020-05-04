@@ -88,7 +88,7 @@ public class Snake : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(Mathf.Abs(transform.position.x - FieldManager.borderRight.position.x));      //1
+        sensor.AddObservation(Mathf.Abs(transform.position.x - FieldManager.borderRight.position.x));       //1
         sensor.AddObservation(Mathf.Abs(transform.position.x - FieldManager.borderLeft.position.x));        //1
         sensor.AddObservation(Mathf.Abs(transform.position.y - FieldManager.borderTop.position.y));         //1
         sensor.AddObservation(Mathf.Abs(transform.position.y - FieldManager.borderBottom.position.y));      //1

@@ -2,11 +2,8 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-<<<<<<< HEAD
-=======
     <CscToolPath>C:\Program Files\Unity\Hub\Editor\2019.2.21f1\Editor\Data\Tools\RoslynScripts</CscToolPath>
     <CscToolExe>unity_csc.bat</CscToolExe>
->>>>>>> e2e2eb50c744834b847e40c5bcbb13d48fbb1b6b
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -56,9 +53,6 @@
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2019.2.21f1</UnityVersion>
   </PropertyGroup>
-  <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.2.21f1\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>

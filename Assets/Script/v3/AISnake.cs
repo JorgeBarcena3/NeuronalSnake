@@ -289,13 +289,13 @@ public class AISnake : Agent
             if (!food_d.eneabled && collideFood(pos))
             {
                 food_d.eneabled = true;
-                values[0] = 1;
+                values[0] = 1 / distance;
                 food_d.pos_f = pos;
             }
             if (!tail_d.eneabled && collideBody(pos))
             {
                 tail_d.eneabled = true;
-                values[1] = 1;
+                values[1] = 1 / distance;
                 tail_d.pos_f = pos;
             }
 

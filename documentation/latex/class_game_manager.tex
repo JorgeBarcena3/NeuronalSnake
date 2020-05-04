@@ -1,0 +1,107 @@
+\hypertarget{class_game_manager}{}\doxysection{Game\+Manager Class Reference}
+\label{class_game_manager}\index{GameManager@{GameManager}}
+
+
+Maneja toda la ejecucion del juego  
+
+
+Inheritance diagram for Game\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_game_manager_a68ef9b41eee396fc1371b9ec48a7667b}{spawn\+Food\+On\+Field}} ()
+\begin{DoxyCompactList}\small\item\em Llama al delegado para spawnear una comida \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_game_manager}{Game\+Manager}} \mbox{\hyperlink{class_game_manager_aca4fad45875368971354db7686d1f717}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve la estancia activa del gamemanager \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_field_manager}{Field\+Manager}} \mbox{\hyperlink{class_game_manager_a4bed3365dea0c326d9c02c90335f5ac0}{Field\+Manager}}
+\begin{DoxyCompactList}\small\item\em Maneja el estado del campo \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_snake}{Snake}} \mbox{\hyperlink{class_game_manager_aa0ff7d2f193cdff011e076889bc15874}{snake}}
+\begin{DoxyCompactList}\small\item\em Seripiente que se encuentra en juego \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+static Action \mbox{\hyperlink{class_game_manager_ac107df1cb7f812fcaac4d78c56b5e63f}{Spawn\+Food}} = delegate \{ \}
+\begin{DoxyCompactList}\small\item\em Delegado que se lanza cuando se cumple el tiempo de espera \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Maneja toda la ejecucion del juego 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_manager_aca4fad45875368971354db7686d1f717}\label{class_game_manager_aca4fad45875368971354db7686d1f717}} 
+\index{GameManager@{GameManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_game_manager}{Game\+Manager}} Game\+Manager.\+get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Devuelve la estancia activa del gamemanager 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_manager_a68ef9b41eee396fc1371b9ec48a7667b}\label{class_game_manager_a68ef9b41eee396fc1371b9ec48a7667b}} 
+\index{GameManager@{GameManager}!spawnFoodOnField@{spawnFoodOnField}}
+\index{spawnFoodOnField@{spawnFoodOnField}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{spawnFoodOnField()}{spawnFoodOnField()}}
+{\footnotesize\ttfamily void Game\+Manager.\+spawn\+Food\+On\+Field (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Llama al delegado para spawnear una comida 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_game_manager_a4bed3365dea0c326d9c02c90335f5ac0}\label{class_game_manager_a4bed3365dea0c326d9c02c90335f5ac0}} 
+\index{GameManager@{GameManager}!FieldManager@{FieldManager}}
+\index{FieldManager@{FieldManager}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{FieldManager}{FieldManager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_field_manager}{Field\+Manager}} Game\+Manager.\+Field\+Manager}
+
+
+
+Maneja el estado del campo 
+
+\mbox{\Hypertarget{class_game_manager_aa0ff7d2f193cdff011e076889bc15874}\label{class_game_manager_aa0ff7d2f193cdff011e076889bc15874}} 
+\index{GameManager@{GameManager}!snake@{snake}}
+\index{snake@{snake}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{snake}{snake}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_snake}{Snake}} Game\+Manager.\+snake}
+
+
+
+Seripiente que se encuentra en juego 
+
+
+
+\doxysubsection{Event Documentation}
+\mbox{\Hypertarget{class_game_manager_ac107df1cb7f812fcaac4d78c56b5e63f}\label{class_game_manager_ac107df1cb7f812fcaac4d78c56b5e63f}} 
+\index{GameManager@{GameManager}!SpawnFood@{SpawnFood}}
+\index{SpawnFood@{SpawnFood}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{SpawnFood}{SpawnFood}}
+{\footnotesize\ttfamily Action Game\+Manager.\+Spawn\+Food = delegate \{ \}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Delegado que se lanza cuando se cumple el tiempo de espera 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Game\+Manager.\+cs\end{DoxyCompactItemize}

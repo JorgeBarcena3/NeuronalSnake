@@ -1,0 +1,159 @@
+\hypertarget{class_snake}{}\doxysection{Snake Class Reference}
+\label{class_snake}\index{Snake@{Snake}}
+
+
+Maneja la serpiente  
+
+
+Inheritance diagram for Snake\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_snake}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_snake_adaebabcd60333dd2d4cc265dc61ff136}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa la serpiente \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_snake_a55e5831439892c052235807a992118ae}\label{class_snake_a55e5831439892c052235807a992118ae}} 
+override void {\bfseries On\+Episode\+Begin} ()
+\item 
+override void \mbox{\hyperlink{class_snake_a0aad917253a886fe064e876db9680571}{Collect\+Observations}} (Vector\+Sensor sensor)
+\begin{DoxyCompactList}\small\item\em Se introducen los inputs a la red \end{DoxyCompactList}\item 
+override float\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_snake_a0fd5cc23a489c6bdfccfabeb999cc838}{Heuristic}} ()
+\begin{DoxyCompactList}\small\item\em se colocan inputs manuales para controlar la ia de forma manual \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_snake_ad858e6c8c60e29d8c42e7ad6b93d421c}{On\+Action\+Received}} (float\mbox{[}$\,$\mbox{]} vector\+Action)
+\begin{DoxyCompactList}\small\item\em Segun los datos que llegan realiza la acción que le especifiques en la función \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_snake_ad2d17ea30de4a419ee8bc58d25d76196}{restart}} ()
+\begin{DoxyCompactList}\small\item\em Reinicia la serpiente \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_snake_ae7894cca324429df4e87201f29f8f702}{tail\+Prefab}}
+\begin{DoxyCompactList}\small\item\em Prefab de la cola de la serpiente \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_snake_a713c352e3d0339aa7921bd14de823030}{time\+\_\+to\+\_\+move}} = 0f
+\begin{DoxyCompactList}\small\item\em Cada cuanto tiempo se movera la serpiente \end{DoxyCompactList}\item 
+Vector2 \mbox{\hyperlink{class_snake_a84244dc7dccaa5fe125977522b269c2a}{position\+\_\+fruit}}
+\begin{DoxyCompactList}\small\item\em posicion de la siguiente fruta \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_field_manager}{Field\+Manager}} \mbox{\hyperlink{class_snake_a1c2dcc932e87fa450f93b9e55629b1fd}{Field\+Manager}}
+\begin{DoxyCompactList}\small\item\em Maneja el estado del campo \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Maneja la serpiente 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_snake_a0aad917253a886fe064e876db9680571}\label{class_snake_a0aad917253a886fe064e876db9680571}} 
+\index{Snake@{Snake}!CollectObservations@{CollectObservations}}
+\index{CollectObservations@{CollectObservations}!Snake@{Snake}}
+\doxysubsubsection{\texorpdfstring{CollectObservations()}{CollectObservations()}}
+{\footnotesize\ttfamily override void Snake.\+Collect\+Observations (\begin{DoxyParamCaption}\item[{Vector\+Sensor}]{sensor }\end{DoxyParamCaption})}
+
+
+
+Se introducen los inputs a la red 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sensor} & distancia a cada uno de los bordes de la pantalla distancia a la fruta la dirección de la serpiente numero de partes que componen la serpiente \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_snake_a0fd5cc23a489c6bdfccfabeb999cc838}\label{class_snake_a0fd5cc23a489c6bdfccfabeb999cc838}} 
+\index{Snake@{Snake}!Heuristic@{Heuristic}}
+\index{Heuristic@{Heuristic}!Snake@{Snake}}
+\doxysubsubsection{\texorpdfstring{Heuristic()}{Heuristic()}}
+{\footnotesize\ttfamily override float \mbox{[}$\,$\mbox{]} Snake.\+Heuristic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+se colocan inputs manuales para controlar la ia de forma manual 
+
+\begin{DoxyReturn}{Returns}
+acciones
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_snake_ad858e6c8c60e29d8c42e7ad6b93d421c}\label{class_snake_ad858e6c8c60e29d8c42e7ad6b93d421c}} 
+\index{Snake@{Snake}!OnActionReceived@{OnActionReceived}}
+\index{OnActionReceived@{OnActionReceived}!Snake@{Snake}}
+\doxysubsubsection{\texorpdfstring{OnActionReceived()}{OnActionReceived()}}
+{\footnotesize\ttfamily override void Snake.\+On\+Action\+Received (\begin{DoxyParamCaption}\item[{float\mbox{[}$\,$\mbox{]}}]{vector\+Action }\end{DoxyParamCaption})}
+
+
+
+Segun los datos que llegan realiza la acción que le especifiques en la función 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector\+Action} & en la primera posicion del array si es mayor que 0 se va a la derecha, menor que cero a la izquierda en la segunda posicion del array si es mayor que 0 se va hacia arriba, menor que cero \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_snake_ad2d17ea30de4a419ee8bc58d25d76196}\label{class_snake_ad2d17ea30de4a419ee8bc58d25d76196}} 
+\index{Snake@{Snake}!restart@{restart}}
+\index{restart@{restart}!Snake@{Snake}}
+\doxysubsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily void Snake.\+restart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reinicia la serpiente 
+
+\mbox{\Hypertarget{class_snake_adaebabcd60333dd2d4cc265dc61ff136}\label{class_snake_adaebabcd60333dd2d4cc265dc61ff136}} 
+\index{Snake@{Snake}!Start@{Start}}
+\index{Start@{Start}!Snake@{Snake}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Snake.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inicializa la serpiente 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_snake_a1c2dcc932e87fa450f93b9e55629b1fd}\label{class_snake_a1c2dcc932e87fa450f93b9e55629b1fd}} 
+\index{Snake@{Snake}!FieldManager@{FieldManager}}
+\index{FieldManager@{FieldManager}!Snake@{Snake}}
+\doxysubsubsection{\texorpdfstring{FieldManager}{FieldManager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_field_manager}{Field\+Manager}} Snake.\+Field\+Manager}
+
+
+
+Maneja el estado del campo 
+
+\mbox{\Hypertarget{class_snake_a84244dc7dccaa5fe125977522b269c2a}\label{class_snake_a84244dc7dccaa5fe125977522b269c2a}} 
+\index{Snake@{Snake}!position\_fruit@{position\_fruit}}
+\index{position\_fruit@{position\_fruit}!Snake@{Snake}}
+\doxysubsubsection{\texorpdfstring{position\_fruit}{position\_fruit}}
+{\footnotesize\ttfamily Vector2 Snake.\+position\+\_\+fruit}
+
+
+
+posicion de la siguiente fruta 
+
+\mbox{\Hypertarget{class_snake_ae7894cca324429df4e87201f29f8f702}\label{class_snake_ae7894cca324429df4e87201f29f8f702}} 
+\index{Snake@{Snake}!tailPrefab@{tailPrefab}}
+\index{tailPrefab@{tailPrefab}!Snake@{Snake}}
+\doxysubsubsection{\texorpdfstring{tailPrefab}{tailPrefab}}
+{\footnotesize\ttfamily Game\+Object Snake.\+tail\+Prefab}
+
+
+
+Prefab de la cola de la serpiente 
+
+\mbox{\Hypertarget{class_snake_a713c352e3d0339aa7921bd14de823030}\label{class_snake_a713c352e3d0339aa7921bd14de823030}} 
+\index{Snake@{Snake}!time\_to\_move@{time\_to\_move}}
+\index{time\_to\_move@{time\_to\_move}!Snake@{Snake}}
+\doxysubsubsection{\texorpdfstring{time\_to\_move}{time\_to\_move}}
+{\footnotesize\ttfamily float Snake.\+time\+\_\+to\+\_\+move = 0f}
+
+
+
+Cada cuanto tiempo se movera la serpiente 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Snake.\+cs\end{DoxyCompactItemize}

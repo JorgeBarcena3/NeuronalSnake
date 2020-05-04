@@ -1,0 +1,159 @@
+\hypertarget{class_snake2}{}\doxysection{Snake2 Class Reference}
+\label{class_snake2}\index{Snake2@{Snake2}}
+
+
+Maneja la serpiente  
+
+
+Inheritance diagram for Snake2\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_snake2}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_snake2_ab29e8c8f7b38781e72f3fb92556b2e3f}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa la serpiente \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_snake2_a9905f2dac44d0a9a5a2015d48a56c9c4}\label{class_snake2_a9905f2dac44d0a9a5a2015d48a56c9c4}} 
+override void {\bfseries On\+Episode\+Begin} ()
+\item 
+override void \mbox{\hyperlink{class_snake2_ac292800f4ac116e6721dac4c41548f21}{Collect\+Observations}} (Vector\+Sensor sensor)
+\begin{DoxyCompactList}\small\item\em Se introducen los inputs a la red \end{DoxyCompactList}\item 
+override float\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_snake2_ae41fdef71624d7fa8863b319931252e7}{Heuristic}} ()
+\begin{DoxyCompactList}\small\item\em se colocan inputs manuales para controlar la ia de forma manual \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_snake2_a8e37a65bbffc0915ffea7ec96d47bdf8}{On\+Action\+Received}} (float\mbox{[}$\,$\mbox{]} vector\+Action)
+\begin{DoxyCompactList}\small\item\em Segun los datos que llegan realiza la acción que le especifiques en la función \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_snake2_af4728e06f544c1d28bb129aaaae6803b}{restart}} ()
+\begin{DoxyCompactList}\small\item\em Reinicia la serpiente \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_snake2_a4eb23d0cdcbcec0ed1dc83a8bdf702f0}{tail\+Prefab}}
+\begin{DoxyCompactList}\small\item\em Prefab de la cola de la serpiente \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_snake2_aa936d4b1956e93a6031f4559e2d871f1}{time\+\_\+to\+\_\+move}} = 0f
+\begin{DoxyCompactList}\small\item\em Cada cuanto tiempo se movera la serpiente \end{DoxyCompactList}\item 
+Vector2 \mbox{\hyperlink{class_snake2_a541286594cb644e249a8d4bd48b8824b}{position\+\_\+fruit}}
+\begin{DoxyCompactList}\small\item\em posicion de la siguiente fruta \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_field_manager}{Field\+Manager}} \mbox{\hyperlink{class_snake2_abe84137905fc277dec4fd09053191c5f}{Field\+Manager}}
+\begin{DoxyCompactList}\small\item\em Maneja el estado del campo \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Maneja la serpiente 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_snake2_ac292800f4ac116e6721dac4c41548f21}\label{class_snake2_ac292800f4ac116e6721dac4c41548f21}} 
+\index{Snake2@{Snake2}!CollectObservations@{CollectObservations}}
+\index{CollectObservations@{CollectObservations}!Snake2@{Snake2}}
+\doxysubsubsection{\texorpdfstring{CollectObservations()}{CollectObservations()}}
+{\footnotesize\ttfamily override void Snake2.\+Collect\+Observations (\begin{DoxyParamCaption}\item[{Vector\+Sensor}]{sensor }\end{DoxyParamCaption})}
+
+
+
+Se introducen los inputs a la red 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sensor} & distancia a cada uno de los bordes de la pantalla posicion de la fruta posicion de la serpiente dirección actual unidades que forman la cola numero de partes que componen la serpiente \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_snake2_ae41fdef71624d7fa8863b319931252e7}\label{class_snake2_ae41fdef71624d7fa8863b319931252e7}} 
+\index{Snake2@{Snake2}!Heuristic@{Heuristic}}
+\index{Heuristic@{Heuristic}!Snake2@{Snake2}}
+\doxysubsubsection{\texorpdfstring{Heuristic()}{Heuristic()}}
+{\footnotesize\ttfamily override float \mbox{[}$\,$\mbox{]} Snake2.\+Heuristic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+se colocan inputs manuales para controlar la ia de forma manual 
+
+\begin{DoxyReturn}{Returns}
+acciones
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_snake2_a8e37a65bbffc0915ffea7ec96d47bdf8}\label{class_snake2_a8e37a65bbffc0915ffea7ec96d47bdf8}} 
+\index{Snake2@{Snake2}!OnActionReceived@{OnActionReceived}}
+\index{OnActionReceived@{OnActionReceived}!Snake2@{Snake2}}
+\doxysubsubsection{\texorpdfstring{OnActionReceived()}{OnActionReceived()}}
+{\footnotesize\ttfamily override void Snake2.\+On\+Action\+Received (\begin{DoxyParamCaption}\item[{float\mbox{[}$\,$\mbox{]}}]{vector\+Action }\end{DoxyParamCaption})}
+
+
+
+Segun los datos que llegan realiza la acción que le especifiques en la función 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector\+Action} & en la primera posicion del array si es mayor que 0 se va a la derecha, menor que cero a la izquierda en la segunda posicion del array si es mayor que 0 se va hacia arriba, menor que cero \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_snake2_af4728e06f544c1d28bb129aaaae6803b}\label{class_snake2_af4728e06f544c1d28bb129aaaae6803b}} 
+\index{Snake2@{Snake2}!restart@{restart}}
+\index{restart@{restart}!Snake2@{Snake2}}
+\doxysubsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily void Snake2.\+restart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reinicia la serpiente 
+
+\mbox{\Hypertarget{class_snake2_ab29e8c8f7b38781e72f3fb92556b2e3f}\label{class_snake2_ab29e8c8f7b38781e72f3fb92556b2e3f}} 
+\index{Snake2@{Snake2}!Start@{Start}}
+\index{Start@{Start}!Snake2@{Snake2}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Snake2.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inicializa la serpiente 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_snake2_abe84137905fc277dec4fd09053191c5f}\label{class_snake2_abe84137905fc277dec4fd09053191c5f}} 
+\index{Snake2@{Snake2}!FieldManager@{FieldManager}}
+\index{FieldManager@{FieldManager}!Snake2@{Snake2}}
+\doxysubsubsection{\texorpdfstring{FieldManager}{FieldManager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_field_manager}{Field\+Manager}} Snake2.\+Field\+Manager}
+
+
+
+Maneja el estado del campo 
+
+\mbox{\Hypertarget{class_snake2_a541286594cb644e249a8d4bd48b8824b}\label{class_snake2_a541286594cb644e249a8d4bd48b8824b}} 
+\index{Snake2@{Snake2}!position\_fruit@{position\_fruit}}
+\index{position\_fruit@{position\_fruit}!Snake2@{Snake2}}
+\doxysubsubsection{\texorpdfstring{position\_fruit}{position\_fruit}}
+{\footnotesize\ttfamily Vector2 Snake2.\+position\+\_\+fruit}
+
+
+
+posicion de la siguiente fruta 
+
+\mbox{\Hypertarget{class_snake2_a4eb23d0cdcbcec0ed1dc83a8bdf702f0}\label{class_snake2_a4eb23d0cdcbcec0ed1dc83a8bdf702f0}} 
+\index{Snake2@{Snake2}!tailPrefab@{tailPrefab}}
+\index{tailPrefab@{tailPrefab}!Snake2@{Snake2}}
+\doxysubsubsection{\texorpdfstring{tailPrefab}{tailPrefab}}
+{\footnotesize\ttfamily Game\+Object Snake2.\+tail\+Prefab}
+
+
+
+Prefab de la cola de la serpiente 
+
+\mbox{\Hypertarget{class_snake2_aa936d4b1956e93a6031f4559e2d871f1}\label{class_snake2_aa936d4b1956e93a6031f4559e2d871f1}} 
+\index{Snake2@{Snake2}!time\_to\_move@{time\_to\_move}}
+\index{time\_to\_move@{time\_to\_move}!Snake2@{Snake2}}
+\doxysubsubsection{\texorpdfstring{time\_to\_move}{time\_to\_move}}
+{\footnotesize\ttfamily float Snake2.\+time\+\_\+to\+\_\+move = 0f}
+
+
+
+Cada cuanto tiempo se movera la serpiente 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Snake2.\+cs\end{DoxyCompactItemize}

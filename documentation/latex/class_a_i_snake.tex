@@ -1,0 +1,302 @@
+\hypertarget{class_a_i_snake}{}\doxysection{A\+I\+Snake Class Reference}
+\label{class_a_i_snake}\index{AISnake@{AISnake}}
+
+
+Maneja la serpiente  
+
+
+Inheritance diagram for A\+I\+Snake\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_i_snake}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_a_i_snake_adac1f49e8e557c92b0b5f73415d39976}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa la serpiente \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_i_snake_a5fe92bf4371562640ab1502757ed6614}{init}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa la snake \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_a_i_snake_a89ed5c8609f2f04b18f4f4fe98efe1bf}{On\+Episode\+Begin}} ()
+\begin{DoxyCompactList}\small\item\em Cuando comienza un episodio \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_a_i_snake_a4a9503b488d369ec168596afb9847493}{Collect\+Observations}} (Vector\+Sensor sensor)
+\begin{DoxyCompactList}\small\item\em Recogemos la informacion \end{DoxyCompactList}\item 
+float\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_a_i_snake_a699292678351fe8203c72a242e1d1d33}{look\+In\+Direction}} (Vector2 direction, \mbox{\hyperlink{class_debug_info}{Debug\+Info}} food\+\_\+d, \mbox{\hyperlink{class_debug_info}{Debug\+Info}} tail\+\_\+d, \mbox{\hyperlink{class_debug_info}{Debug\+Info}} wall\+\_\+d)
+\begin{DoxyCompactList}\small\item\em Miramos en una direccion \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_i_snake_a22339d294de6da273babd8a32350d88b}{collide\+Limits}} (Vector2 point)
+\begin{DoxyCompactList}\small\item\em Hacemos colision con los limites \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_i_snake_a57ab8c867ad9c7b6ce01d713e96adc2d}{collide\+Body}} (Vector2 point)
+\begin{DoxyCompactList}\small\item\em Colisionamos con un cuerpo \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_i_snake_a4f6c288686d5b53a661a0ec80ca550d1}{collide\+Food}} (Vector2 point)
+\begin{DoxyCompactList}\small\item\em Colisionamos con una comida \end{DoxyCompactList}\item 
+override float\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_a_i_snake_ab2866727f77dffb50bf2bb80aacf3d02}{Heuristic}} ()
+\begin{DoxyCompactList}\small\item\em Seteamos unos u otros valores de manera manual \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_a_i_snake_a71f0441bd4129528ed681d3eb050ae82}{On\+Action\+Received}} (float\mbox{[}$\,$\mbox{]} vector\+Action)
+\begin{DoxyCompactList}\small\item\em Cuando recibimos la informacion, selecionamos una direccion \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_i_snake_a4412586550b3e0176e2c4a049a3cddbf}{restart}} ()
+\begin{DoxyCompactList}\small\item\em Reinicia la serpiente \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_i_room_manager}{A\+I\+Room\+Manager}} \mbox{\hyperlink{class_a_i_snake_a8f864f47cc1297fa38be61ed610bbc51}{room\+Manager}}
+\begin{DoxyCompactList}\small\item\em Manager del room \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_a_i_snake_a85629a74a3fde24f9a23cf03261567cd}{tail\+Prefab}}
+\begin{DoxyCompactList}\small\item\em Prefab de la cola de la serpiente \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_a_i_snake_a8257654ec0d5da6509bda8f014dba4f3}{time\+\_\+to\+\_\+move}} = 0.\+3f
+\begin{DoxyCompactList}\small\item\em Cada cuanto tiempo se movera la serpiente \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_i_snake_ab8b51fae0bc94ca4c899875d7efda568}{debugging}} = false
+\begin{DoxyCompactList}\small\item\em Cada cuanto tiempo se movera la serpiente \end{DoxyCompactList}\item 
+List$<$ Transform $>$ \mbox{\hyperlink{class_a_i_snake_a116320a47952e4fdd2a341a9b74a9539}{tail}} = new List$<$Transform$>$()
+\begin{DoxyCompactList}\small\item\em Lista de posiciones de la cola \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_i_snake_a72d531149cfbcd04adec6a2c3ce603ea}{is\+IA}} = true
+\begin{DoxyCompactList}\small\item\em Determina si quien juega es la IA \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+Action$<$ \mbox{\hyperlink{class_a_i_room_manager}{A\+I\+Room\+Manager}} $>$ \mbox{\hyperlink{class_a_i_snake_a070b27dc1069709621f86f17765073fe}{dead\+Delegate}} = delegate \{ \}
+\begin{DoxyCompactList}\small\item\em Delegado que se lanza cuando la serpiente muere \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Maneja la serpiente 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_i_snake_a4a9503b488d369ec168596afb9847493}\label{class_a_i_snake_a4a9503b488d369ec168596afb9847493}} 
+\index{AISnake@{AISnake}!CollectObservations@{CollectObservations}}
+\index{CollectObservations@{CollectObservations}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{CollectObservations()}{CollectObservations()}}
+{\footnotesize\ttfamily override void A\+I\+Snake.\+Collect\+Observations (\begin{DoxyParamCaption}\item[{Vector\+Sensor}]{sensor }\end{DoxyParamCaption})}
+
+
+
+Recogemos la informacion 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sensor} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_i_snake_a57ab8c867ad9c7b6ce01d713e96adc2d}\label{class_a_i_snake_a57ab8c867ad9c7b6ce01d713e96adc2d}} 
+\index{AISnake@{AISnake}!collideBody@{collideBody}}
+\index{collideBody@{collideBody}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{collideBody()}{collideBody()}}
+{\footnotesize\ttfamily bool A\+I\+Snake.\+collide\+Body (\begin{DoxyParamCaption}\item[{Vector2}]{point }\end{DoxyParamCaption})}
+
+
+
+Colisionamos con un cuerpo 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_i_snake_a4f6c288686d5b53a661a0ec80ca550d1}\label{class_a_i_snake_a4f6c288686d5b53a661a0ec80ca550d1}} 
+\index{AISnake@{AISnake}!collideFood@{collideFood}}
+\index{collideFood@{collideFood}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{collideFood()}{collideFood()}}
+{\footnotesize\ttfamily bool A\+I\+Snake.\+collide\+Food (\begin{DoxyParamCaption}\item[{Vector2}]{point }\end{DoxyParamCaption})}
+
+
+
+Colisionamos con una comida 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_i_snake_a22339d294de6da273babd8a32350d88b}\label{class_a_i_snake_a22339d294de6da273babd8a32350d88b}} 
+\index{AISnake@{AISnake}!collideLimits@{collideLimits}}
+\index{collideLimits@{collideLimits}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{collideLimits()}{collideLimits()}}
+{\footnotesize\ttfamily bool A\+I\+Snake.\+collide\+Limits (\begin{DoxyParamCaption}\item[{Vector2}]{point }\end{DoxyParamCaption})}
+
+
+
+Hacemos colision con los limites 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_i_snake_ab2866727f77dffb50bf2bb80aacf3d02}\label{class_a_i_snake_ab2866727f77dffb50bf2bb80aacf3d02}} 
+\index{AISnake@{AISnake}!Heuristic@{Heuristic}}
+\index{Heuristic@{Heuristic}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{Heuristic()}{Heuristic()}}
+{\footnotesize\ttfamily override float \mbox{[}$\,$\mbox{]} A\+I\+Snake.\+Heuristic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Seteamos unos u otros valores de manera manual 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_i_snake_a5fe92bf4371562640ab1502757ed6614}\label{class_a_i_snake_a5fe92bf4371562640ab1502757ed6614}} 
+\index{AISnake@{AISnake}!init@{init}}
+\index{init@{init}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void A\+I\+Snake.\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inicializa la snake 
+
+\mbox{\Hypertarget{class_a_i_snake_a699292678351fe8203c72a242e1d1d33}\label{class_a_i_snake_a699292678351fe8203c72a242e1d1d33}} 
+\index{AISnake@{AISnake}!lookInDirection@{lookInDirection}}
+\index{lookInDirection@{lookInDirection}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{lookInDirection()}{lookInDirection()}}
+{\footnotesize\ttfamily float \mbox{[}$\,$\mbox{]} A\+I\+Snake.\+look\+In\+Direction (\begin{DoxyParamCaption}\item[{Vector2}]{direction,  }\item[{\mbox{\hyperlink{class_debug_info}{Debug\+Info}}}]{food\+\_\+d,  }\item[{\mbox{\hyperlink{class_debug_info}{Debug\+Info}}}]{tail\+\_\+d,  }\item[{\mbox{\hyperlink{class_debug_info}{Debug\+Info}}}]{wall\+\_\+d }\end{DoxyParamCaption})}
+
+
+
+Miramos en una direccion 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_i_snake_a71f0441bd4129528ed681d3eb050ae82}\label{class_a_i_snake_a71f0441bd4129528ed681d3eb050ae82}} 
+\index{AISnake@{AISnake}!OnActionReceived@{OnActionReceived}}
+\index{OnActionReceived@{OnActionReceived}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{OnActionReceived()}{OnActionReceived()}}
+{\footnotesize\ttfamily override void A\+I\+Snake.\+On\+Action\+Received (\begin{DoxyParamCaption}\item[{float\mbox{[}$\,$\mbox{]}}]{vector\+Action }\end{DoxyParamCaption})}
+
+
+
+Cuando recibimos la informacion, selecionamos una direccion 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector\+Action} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_i_snake_a89ed5c8609f2f04b18f4f4fe98efe1bf}\label{class_a_i_snake_a89ed5c8609f2f04b18f4f4fe98efe1bf}} 
+\index{AISnake@{AISnake}!OnEpisodeBegin@{OnEpisodeBegin}}
+\index{OnEpisodeBegin@{OnEpisodeBegin}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{OnEpisodeBegin()}{OnEpisodeBegin()}}
+{\footnotesize\ttfamily override void A\+I\+Snake.\+On\+Episode\+Begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Cuando comienza un episodio 
+
+\mbox{\Hypertarget{class_a_i_snake_a4412586550b3e0176e2c4a049a3cddbf}\label{class_a_i_snake_a4412586550b3e0176e2c4a049a3cddbf}} 
+\index{AISnake@{AISnake}!restart@{restart}}
+\index{restart@{restart}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily void A\+I\+Snake.\+restart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reinicia la serpiente 
+
+\mbox{\Hypertarget{class_a_i_snake_adac1f49e8e557c92b0b5f73415d39976}\label{class_a_i_snake_adac1f49e8e557c92b0b5f73415d39976}} 
+\index{AISnake@{AISnake}!Start@{Start}}
+\index{Start@{Start}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void A\+I\+Snake.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inicializa la serpiente 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_a_i_snake_ab8b51fae0bc94ca4c899875d7efda568}\label{class_a_i_snake_ab8b51fae0bc94ca4c899875d7efda568}} 
+\index{AISnake@{AISnake}!debugging@{debugging}}
+\index{debugging@{debugging}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{debugging}{debugging}}
+{\footnotesize\ttfamily bool A\+I\+Snake.\+debugging = false}
+
+
+
+Cada cuanto tiempo se movera la serpiente 
+
+\mbox{\Hypertarget{class_a_i_snake_a72d531149cfbcd04adec6a2c3ce603ea}\label{class_a_i_snake_a72d531149cfbcd04adec6a2c3ce603ea}} 
+\index{AISnake@{AISnake}!isIA@{isIA}}
+\index{isIA@{isIA}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{isIA}{isIA}}
+{\footnotesize\ttfamily bool A\+I\+Snake.\+is\+IA = true}
+
+
+
+Determina si quien juega es la IA 
+
+\mbox{\Hypertarget{class_a_i_snake_a8f864f47cc1297fa38be61ed610bbc51}\label{class_a_i_snake_a8f864f47cc1297fa38be61ed610bbc51}} 
+\index{AISnake@{AISnake}!roomManager@{roomManager}}
+\index{roomManager@{roomManager}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{roomManager}{roomManager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_a_i_room_manager}{A\+I\+Room\+Manager}} A\+I\+Snake.\+room\+Manager}
+
+
+
+Manager del room 
+
+\mbox{\Hypertarget{class_a_i_snake_a116320a47952e4fdd2a341a9b74a9539}\label{class_a_i_snake_a116320a47952e4fdd2a341a9b74a9539}} 
+\index{AISnake@{AISnake}!tail@{tail}}
+\index{tail@{tail}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{tail}{tail}}
+{\footnotesize\ttfamily List$<$Transform$>$ A\+I\+Snake.\+tail = new List$<$Transform$>$()}
+
+
+
+Lista de posiciones de la cola 
+
+\mbox{\Hypertarget{class_a_i_snake_a85629a74a3fde24f9a23cf03261567cd}\label{class_a_i_snake_a85629a74a3fde24f9a23cf03261567cd}} 
+\index{AISnake@{AISnake}!tailPrefab@{tailPrefab}}
+\index{tailPrefab@{tailPrefab}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{tailPrefab}{tailPrefab}}
+{\footnotesize\ttfamily Game\+Object A\+I\+Snake.\+tail\+Prefab}
+
+
+
+Prefab de la cola de la serpiente 
+
+\mbox{\Hypertarget{class_a_i_snake_a8257654ec0d5da6509bda8f014dba4f3}\label{class_a_i_snake_a8257654ec0d5da6509bda8f014dba4f3}} 
+\index{AISnake@{AISnake}!time\_to\_move@{time\_to\_move}}
+\index{time\_to\_move@{time\_to\_move}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{time\_to\_move}{time\_to\_move}}
+{\footnotesize\ttfamily float A\+I\+Snake.\+time\+\_\+to\+\_\+move = 0.\+3f}
+
+
+
+Cada cuanto tiempo se movera la serpiente 
+
+
+
+\doxysubsection{Event Documentation}
+\mbox{\Hypertarget{class_a_i_snake_a070b27dc1069709621f86f17765073fe}\label{class_a_i_snake_a070b27dc1069709621f86f17765073fe}} 
+\index{AISnake@{AISnake}!deadDelegate@{deadDelegate}}
+\index{deadDelegate@{deadDelegate}!AISnake@{AISnake}}
+\doxysubsubsection{\texorpdfstring{deadDelegate}{deadDelegate}}
+{\footnotesize\ttfamily Action$<$\mbox{\hyperlink{class_a_i_room_manager}{A\+I\+Room\+Manager}}$>$ A\+I\+Snake.\+dead\+Delegate = delegate \{ \}}
+
+
+
+Delegado que se lanza cuando la serpiente muere 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+v3/A\+I\+Snake.\+cs\end{DoxyCompactItemize}

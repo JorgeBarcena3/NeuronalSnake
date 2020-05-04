@@ -55,9 +55,6 @@ public class Snake : Agent
     /// </summary>
     private float my_delta_time;
 
-    private bool[] sensor_cola = new bool[8];
-    private bool[] sensor_fruta = new bool[8];
-
 
     /// <summary>
     /// Inicializa la serpiente
@@ -85,7 +82,15 @@ public class Snake : Agent
             my_delta_time = 0;
         }
     }
-
+    /// <summary>
+    /// Se introducen los inputs a la red
+    /// </summary>
+    /// <param name="sensor">
+    /// distancia a cada uno de los bordes de la pantalla
+    /// distancia a la fruta
+    /// la dirección de la serpiente 
+    /// numero de partes que componen la serpiente
+    /// </param>
     public override void CollectObservations(VectorSensor sensor)
     {
         sensor.AddObservation(Mathf.Abs(transform.position.x - FieldManager.borderRight.position.x));       //1
@@ -97,6 +102,10 @@ public class Snake : Agent
         sensor.AddObservation(tail.Count());                                                                //1
 
     }
+    /// <summary>
+    /// se colocan inputs manuales para controlar la ia de forma manual
+    /// </summary>
+    /// <returns>acciones</returns>
     public override float[] Heuristic()
     {
         var action = new float[2];
@@ -106,7 +115,13 @@ public class Snake : Agent
 
         return action;
     }
-
+    /// <summary>
+    /// Segun los datos que llegan realiza la acción que le especifiques en la función
+    /// </summary>
+    /// <param name="vectorAction">
+    /// en la primera posicion del array si es mayor que 0 se va a la derecha, menor que cero a la izquierda
+    /// en la segunda posicion del array si es mayor que 0 se va hacia arriba, menor que cero 
+    /// </param>
     public override void OnActionReceived(float[] vectorAction)
     {
 
